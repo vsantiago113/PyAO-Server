@@ -12,16 +12,15 @@ services:
     networks:
       - pyao_network
     volumes:
-      - /etc/vault:/etc/vault
-      - /etc/vault/config:/etc/vault/config
-      - /etc/vault/policies:/etc/vault/policies
-      - /etc/vault/data:/etc/vault/data
-      - /etc/vault/logs:/etc/vault/logs
+      - /etc/vault:/vault
+      - /etc/vault/config:/vault/config
+      - /etc/vault/file:/vault/file
+      - /etc/vault/logs:/vault/logs
     environment:
       - VAULT_ADDR=http://0.0.0.0:8200
     cap_add:
       - IPC_LOCK
-    command: vault server -config=/etc/vault/config/config.hcl
+    command: vault server -config=/vault/config/config.hcl
 
 networks:
   pyao_network:
