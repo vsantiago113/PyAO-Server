@@ -1,0 +1,27 @@
+# We are using version 2 for compatibility with Portainer
+version: "2"
+services:
+  vault:
+    restart: always
+    container_name: vault
+    labels:
+      local.mechanizecode.vault: "Vault Server"
+    image: vault:latest
+    ports:
+      - 8200:8200
+    networks:
+      - pyao_network
+    volumes:
+      - /etc/vault:/etc/vault
+      - /etc/vault/config:/etc/vault/config
+      - /etc/vault/policies:/etc/vault/policies
+      - /etc/vault/data:/etc/vault/data
+      - /etc/vault/logs:/etc/vault/logs
+    environment:
+      - VAULT_ADDR=http://0.0.0.0:8200
+    cap_add:
+      - IPC_LOCK
+    command: vault server -config=/etc/vault/config/config.hcl
+
+networks:
+  pyao_network:
