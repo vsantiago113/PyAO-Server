@@ -4,23 +4,16 @@ services:
   vault:
     restart: always
     container_name: vault
-    labels:
-      local.mechanizecode.vault: "Vault Server"
     image: vault:latest
     ports:
       - 8200:8200
-    networks:
-      - pyao_network
     volumes:
-      - /etc/vault:/vault
-      - /etc/vault/config:/vault/config
-      - /etc/vault/file:/vault/file
-      - /etc/vault/logs:/vault/logs
+      - /etc/container_data/vault:/vault
+      - /etc/container_data/vault/config:/vault/config
+      - /etc/container_data/vault/file:/vault/file
+      - /etc/container_data/vault/logs:/vault/logs
     environment:
       - VAULT_ADDR=http://0.0.0.0:8200
     cap_add:
       - IPC_LOCK
     command: vault server -config=/vault/config/config.hcl
-
-networks:
-  pyao_network:

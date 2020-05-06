@@ -1,0 +1,15 @@
+# We are using version 2 for compatibility with Portainer
+version: "2"
+services:
+  portainer:
+    restart: always
+    container_name: portainer
+    image: portainer/portainer
+    ports:
+      - 9000:9000
+      - 8000:8000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/container_data/portainer/data:/data
+    command:
+      -H unix:///var/run/docker.sock
