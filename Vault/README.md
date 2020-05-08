@@ -33,4 +33,3 @@ default_lease_ttl = "10h"
 ```
 
 - [X] Go in Portainer > Stacks > Add stack > give it a name and under Web editor paste the content of the vault-docker-compose.yml and then click on "Deploy the stack"
-

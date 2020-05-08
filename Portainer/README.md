@@ -3,17 +3,7 @@
 
 ---
 
-### Run Portainer as a Docker container over SSL
-- [X] Create Portainer root and data directories
-```
-$ sudo mkdir -p /etc/container_data/portainer/data
-```
-
-- [X] Lets create the network for Portainer and all other containers
-```
-$ sudo docker network create pyao_network
-```
-
+### Run Portainer as a Docker container
 - [X] Lets store the Docker-Compose file in the server
 ```
 $ sudo vi /etc/container_data/compose_files/portainer-docker-compose.yml
