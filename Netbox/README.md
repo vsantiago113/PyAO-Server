@@ -29,7 +29,7 @@ version: '3.4'
 services:
   nginx:
     ports:
-    - 8000:8080
+    - 8585:8080
 ```
 
 - [X] Download all the images

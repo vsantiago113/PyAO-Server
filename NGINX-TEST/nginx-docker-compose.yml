@@ -10,4 +10,4 @@ services:
       - 443:443
     volumes:
       - /etc/container_data/reverse_proxy:/etc/nginx
-      - /etc/container_data/reverse_proxy/conf.d:/etc/nginx/conf.d
+      - /etc/container_data/certs:/certs

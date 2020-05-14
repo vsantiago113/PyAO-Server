@@ -10,3 +10,4 @@ services:
       - 50000:50000
     volumes:
       - jenkins_data:/var/jenkins_home
+      - /etc/container_data/certs:/certs

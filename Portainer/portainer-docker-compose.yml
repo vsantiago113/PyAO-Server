@@ -10,6 +10,10 @@ services:
       - 8000:8000
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /etc/container_data/portainer/data:/data
+      - /etc/container_data/portainer:/data
+      - /etc/container_data/certs:/certs
     command:
+      --ssl
+      --sslcert /certs/portainer.crt
+      --sslkey /certs/portainer.key
       -H unix:///var/run/docker.sock
