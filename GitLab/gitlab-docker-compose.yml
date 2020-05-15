@@ -5,9 +5,11 @@ services:
     restart: always
     container_name: gitlab
     image: 'gitlab/gitlab-ce:latest'
+    networks:
+      - automation_network
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://127.0.0.1:8929'
+        external_url 'http://0.0.0.0:8929'
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
     ports:
       - '8929:8929'
@@ -16,3 +18,8 @@ services:
       - '/etc/container_data/gitlab/config:/etc/gitlab'
       - '/etc/container_data/gitlab/logs:/var/log/gitlab'
       - '/etc/container_data/gitlab/data:/var/opt/gitlab'
+
+networks:
+  automation_network:
+    external:
+      name: automation_network

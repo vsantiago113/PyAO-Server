@@ -7,7 +7,7 @@ We are using CentOS 8 as a minimal server installation
 ## Optional - Examples of configuring Proxy
 - [X] Example 1:
 ```
-$ export http_proxy=http://proxy.example.com:3128
+$ export http_proxy=http://proxy.offensivescripting.com:3128
 ```
 ```
 $ export proxy_username=myusername
@@ -21,7 +21,7 @@ $ export proxy_username=mypassword
 $ sudo vi /etc/yum.conf
 ```
 ```
-proxy=http://proxy.example.com:3128
+proxy=http://proxy.offensivescripting.com:3128
 proxy_username=myusername 
 proxy_password=mypassword
 ```
@@ -31,7 +31,7 @@ proxy_password=mypassword
 $ sudo vi /etc/profile.d/custom_global_configs.sh
 ```
 ```
-export http_proxy=http://proxy.example.com:3128
+export http_proxy=http://proxy.offensivescripting.com:3128
 export proxy_username=myusername
 export proxy_username=mypassword
 ```
@@ -75,6 +75,11 @@ $ sudo mkdir /etc/container_data/certs
 - [X] Lets create a directory to store all Docker-Compose files
 ```
 $ sudo mkdir /etc/container_data/compose_files
+```
+
+- [X] Lets create the reverse proxy directory where we will store the NGINX blocks
+```ignorelang
+$ sudo mkdir -p /etc/container_data/reverse_proxy/conf.d
 ```
 
 ## Lets install Python3
@@ -188,3 +193,10 @@ $ sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
 ```
 $ docker-compose --version
 ```
+
+- [X] IMPORTANT NOTE: create the docker containers in the following order
+1. Portainer
+2. Create all the other containers but leave the reverse proxy to the end...
+3. NGINX Reverse Proxy
+
+While creating the containers leave all the initial configs for after your reverse proxy is up and ready so you can loging on each of them over SSL and prevent from someone stealing your credentials.

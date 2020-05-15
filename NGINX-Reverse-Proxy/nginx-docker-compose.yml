@@ -5,9 +5,16 @@ services:
     restart: always
     container_name: reverse_proxy
     image: nginx:latest
+    networks:
+      - automation_network
     ports:
       - 80:80
       - 443:443
     volumes:
       - /etc/container_data/reverse_proxy:/etc/nginx
       - /etc/container_data/certs:/certs
+
+networks:
+  automation_network:
+    external:
+      name: automation_network
