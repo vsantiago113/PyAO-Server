@@ -77,6 +77,11 @@ $ sudo mkdir /etc/container_data/certs
 $ sudo mkdir /etc/container_data/compose_files
 ```
 
+## Lets install wget
+```ignorelang
+$ sudo dnf install -y wget
+```
+
 ## Lets install Python3
 ```
 $ sudo dnf install -y python3
