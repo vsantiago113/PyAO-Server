@@ -3,31 +3,94 @@
 
 ---
 
-- [X] Lets create the SSL certificates
+- [X] Lets create the SSL certificates for all our applications
+NGINX Reverse Proxy
 ```ignorelang
-$ sudo openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/container_data/certs/offensivescripting.com.key -out /etc/container_data/certs/offensivescripting.com.crt -batch
+$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/pki/tls/private/offensivescripting.com.key -out /etc/pki/tls/certs/offensivescripting.com.crt -batch
 ```
 
-- [X] Lets create the base.conf for NGINX reverse proxy to redirect to https://offensivescripting.com
-Lets create the base.conf file and paste the content in it.
+Portainer
 ```ignorelang
-$ sudo vi /etc/container_data/reverse_proxy/conf.d/base.conf
+$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/pki/tls/private/portainer.offensivescripting.com.key -out /etc/pki/tls/certs/portainer.offensivescripting.com.crt -batch
 ```
 
-- [X] Lets create the nginx.conf default configuration file for NGINX
+GitLab
 ```ignorelang
-$ sudo docker container create --name temp_nginx nginx
+$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/pki/tls/private/gitlab.offensivescripting.com.key -out /etc/pki/tls/certs/gitlab.offensivescripting.com.crt -batch
 ```
 
-- [X] Lets copy the nginx.conf file and the mime.types file from the temp_nginx container to the external location we want to use
+Jenkins
 ```ignorelang
-$ sudo docker cp temp_nginx:/etc/nginx/nginx.conf /etc/container_data/reverse_proxy/nginx.conf
-$ sudo docker cp temp_nginx:/etc/nginx/mime.types /etc/container_data/reverse_proxy/mime.types
+$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/pki/tls/private/jenkins.offensivescripting.com.key -out /etc/pki/tls/certs/jenkins.offensivescripting.com.crt -batch
 ```
 
--[X] Lets remove the temp_nginx container
+Netbox
 ```ignorelang
-$ sudo docker container rm temp_nginx
+$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/pki/tls/private/netbox.offensivescripting.com.key -out /etc/pki/tls/certs/netbox.offensivescripting.com.crt -batch
 ```
 
-- [X] Go in Portainer > Stacks > Add stack > give it a name and under Web editor paste the content of the nginx-docker-compose.yml and then click on "Deploy the stack"
+Vault
+```ignorelang
+$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/pki/tls/private/vault.offensivescripting.com.key -out /etc/pki/tls/certs/vault.offensivescripting.com.crt -batch
+```
+
+Grafana
+```ignorelang
+$ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/pki/tls/private/grafana.offensivescripting.com.key -out /etc/pki/tls/certs/grafana.offensivescripting.com.crt -batch
+```
+
+- [X] Lets assign the permissions to the certificates
+```ignorelang
+$ sudo chown -R root:root /etc/pki/tls/private
+```
+Or you can also do
+```ignorelang
+$ find /etc/pki/tls/certs -type f -exec chmod 0600 {} \;
+```
+
+- [X] Lets create the .conf files to redirect our containers to use SSL thought our reverse proxy with NGINX
+Copy the content of the file from our conf.d folder into the server /etc/nginx/conf.d/xxx.conf file
+NGINX Reverse Proxy
+```ignorelang
+$ sudo vi /etc/nginx/conf.d/base.conf
+```
+
+Portainer
+```ignorelang
+$ sudo vi /etc/nginx/conf.d/portainer.conf
+```
+
+GitLab
+```ignorelang
+$ sudo vi /etc/nginx/conf.d/gitlab.conf
+```
+
+Jenkins
+```ignorelang
+$ sudo vi /etc/nginx/conf.d/jenkins.conf
+```
+
+Netbox
+```ignorelang
+$ sudo vi /etc/nginx/conf.d/netbox.conf
+```
+
+Vault
+```ignorelang
+$ sudo vi /etc/nginx/conf.d/vault.conf
+```
+
+Grafana
+```ignorelang
+$ sudo vi /etc/nginx/conf.d/grafana.conf
+```
+
+- [X] Reload the NGINX Config
+```ignorelang
+$ sudo systemctl reload nginx
+```
+
+- [X] Make sure the config loaded without errors
+```ignorelang
+$ sudo nginx -t
+```

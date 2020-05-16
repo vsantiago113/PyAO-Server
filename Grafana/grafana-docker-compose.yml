@@ -1,0 +1,27 @@
+# We are using version 2 for compatibility with Portainer
+version: "2"
+services:
+  grafana:
+    restart: always
+    depends_on:
+      - influxdb
+    container_name: grafana
+    image: grafana/grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+  influxdb:
+    restart: always
+    container_name: influxdb
+    image: influxdb
+    ports:
+      - 8086:8086
+    volumes:
+      - influxdb_data:/var/lib/influxdb
+
+volumes:
+  grafana_data:
+    external: true
+  influxdb_data:
+    external: true

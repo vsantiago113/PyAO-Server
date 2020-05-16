@@ -5,15 +5,8 @@ services:
     restart: always
     container_name: jenkins
     image: jenkinsci/blueocean
-    networks:
-      - automation_network
     ports:
       - 8080:8080
       - 50000:50000
     volumes:
       - jenkins_data:/var/jenkins_home
-
-networks:
-  automation_network:
-    external:
-      name: automation_network

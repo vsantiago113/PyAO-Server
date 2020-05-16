@@ -3,17 +3,6 @@
 
 ---
 
-- [X] Lets create the SSL certificates
-```ignorelang
-$ sudo openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/container_data/certs/netbox.offensivescripting.com.key -out /etc/container_data/certs/netbox.offensivescripting.com.crt -batch
-```
-
-- [X] Lets create the netbox.conf for NGINX reverse proxy to redirect to https://netbox.offensivescripting.com
-Lets create the netbox.conf file and paste the content in it.
-```ignorelang
-$ sudo vi /etc/container_data/reverse_proxy/conf.d/netbox.conf
-```
-
 - [X] Go into our containers directory
 ```
 $ cd /etc/container_data/compose_files

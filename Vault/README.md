@@ -4,17 +4,6 @@
 
 ---
 
-- [X] Lets create the SSL certificates
-```ignorelang
-$ sudo openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /etc/container_data/certs/vault.offensivescripting.com.key -out /etc/container_data/certs/vault.offensivescripting.com.crt -batch
-```
-
-- [X] Lets create the vault.conf for NGINX reverse proxy to redirect to https://vault.offensivescripting.com
-Lets create the vault.conf file and paste the content in it.
-```ignorelang
-$ sudo vi /etc/container_data/reverse_proxy/conf.d/vault.conf
-```
-
 ### Server configs for Vault container
 - [X] Create Vault root and config directories
 ```

@@ -77,11 +77,6 @@ $ sudo mkdir /etc/container_data/certs
 $ sudo mkdir /etc/container_data/compose_files
 ```
 
-- [X] Lets create the reverse proxy directory where we will store the NGINX blocks
-```ignorelang
-$ sudo mkdir -p /etc/container_data/reverse_proxy/conf.d
-```
-
 ## Lets install Python3
 ```
 $ sudo dnf install -y python3
@@ -195,8 +190,6 @@ $ docker-compose --version
 ```
 
 - [X] IMPORTANT NOTE: create the docker containers in the following order
-1. Portainer
-2. Create all the other containers but leave the reverse proxy to the end...
-3. NGINX Reverse Proxy
-
-While creating the containers leave all the initial configs for after your reverse proxy is up and ready so you can loging on each of them over SSL and prevent from someone stealing your credentials.
+1. NGINX Reverse Proxy
+2. Portainer
+3. Create the rest of the containers...

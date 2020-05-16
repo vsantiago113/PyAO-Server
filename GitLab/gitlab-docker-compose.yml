@@ -3,23 +3,17 @@ version: "2"
 services:
   gitlab:
     restart: always
+    hostname: gitlab.offensivescripting.com
     container_name: gitlab
-    image: 'gitlab/gitlab-ce:latest'
-    networks:
-      - automation_network
+    image: gitlab/gitlab-ce:latest
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url 'http://0.0.0.0:8929'
+        external_url 'https://gitlab.offensivescripting.com:8929'
         gitlab_rails['gitlab_shell_ssh_port'] = 2224
     ports:
-      - '8929:8929'
-      - '2224:22'
+      - 8929:8929
+      - 2224:22
     volumes:
-      - '/etc/container_data/gitlab/config:/etc/gitlab'
-      - '/etc/container_data/gitlab/logs:/var/log/gitlab'
-      - '/etc/container_data/gitlab/data:/var/opt/gitlab'
-
-networks:
-  automation_network:
-    external:
-      name: automation_network
+      - /etc/container_data/gitlab/config:/etc/gitlab
+      - /etc/container_data/gitlab/logs:/var/log/gitlab
+      - /etc/container_data/gitlab/data:/var/opt/gitlab
