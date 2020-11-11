@@ -136,7 +136,7 @@ $ sudo dnf config-manager \
 - [X] Install Docker Engine - Community<br />
 - [X] Note: If prompted to accept the GPG key, verify that the fingerprint matches 060A 61C5 1B55 8A7F 742B 77AA C52F EB6B 621E 9F35, and if so, accept it.
 ```
-$ sudo dnf -y install docker-ce docker-ce-cli containerd.io --nobest --skip-broken
+$ sudo dnf -y install docker-ce docker-ce-cli containerd.io --nobest --allowerasing
 ```
 
 - [X] Make Docker start automatically on boot
