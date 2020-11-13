@@ -219,3 +219,13 @@ $ sudo firewall-cmd --reload
 $ sudo firewall-cmd --zone=public --remove-port=5000/tcp --permanent
 $ sudo firewall-cmd --reload
 ```
+
+- [X] List ports
+```commandline
+$ sudo firewall-cmd --list-all
+```
+
+- [X] List services
+```commandline
+$ sudo firewall-cmd --list-services
+```
