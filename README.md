@@ -198,3 +198,24 @@ $ docker-compose --version
 1. NGINX Reverse Proxy
 2. Portainer
 3. Create the rest of the containers...
+
+### How to install firewalld
+- [X] Install and setup firewalld
+```commandline
+$ sudo dnf install firewalld
+$ sudo systemctl enable firewalld
+$ sudo systemctl start firewalld
+$ sudo systemctl status firewalld
+```
+
+- [X] How to allow a port?
+```commandline
+$ sudo firewall-cmd --zone=public --add-port=5000/tcp --permanent
+$ sudo firewall-cmd --reload
+```
+
+- [X] How to block a port?
+```commandline
+$ sudo firewall-cmd --zone=public --remove-port=5000/tcp --permanent
+$ sudo firewall-cmd --reload
+```
