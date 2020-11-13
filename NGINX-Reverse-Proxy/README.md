@@ -1,7 +1,28 @@
-### Official Documentation
-[NGINX Docker Official Images](https://hub.docker.com/_/nginx "NGINX Docker Official Images")
+### Install and setup NGINX as a reverse proxy
 
 ---
+
+- [X] Let's install NGINX
+```commandline
+$ sudo dnf install -y nginx
+```
+
+- [X] Let's enable NGINX so it starts on boot
+```commandline
+$ sudo systemctl enable nginx
+```
+
+- [X] Let's start NGINX
+```commandline
+$ sudo systemctl start nginx
+```
+
+- [X] Let's create two Firewall rules to allow HTTP and HTTPS then reload the Firewall
+```commandline
+$ sudo firewall-cmd --permanent --add-service='http'
+$ sudo firewall-cmd --permanent --add-service='https'
+$ sudo firewall-cmd --reload
+```
 
 - [X] Lets create the SSL certificates for all our applications
 NGINX Reverse Proxy
