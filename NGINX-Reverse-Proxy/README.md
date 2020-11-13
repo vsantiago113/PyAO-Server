@@ -115,3 +115,8 @@ $ sudo systemctl reload nginx
 ```ignorelang
 $ sudo nginx -t
 ```
+
+- [X] How to check for logs in NGINX
+```commandline
+$ tail -f /var/log/nginx/error.log
+```
