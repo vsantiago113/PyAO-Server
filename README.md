@@ -78,7 +78,7 @@ $ sudo mkdir /etc/container_data/compose_files
 ```
 
 ## Lets install wget
-```ignorelang
+```
 $ sudo dnf install -y wget
 ```
 
@@ -172,11 +172,11 @@ $ sudo usermod -aG docker your-user
 - [X] Note: Remember to log out and back in for this to take effect!
 
 ## Lets install Docker-Compose
-- [X] NOTE: To install a different version of Compose, substitute 1.25.5 with the version of Compose you want to use. To check the latest version, go to docker/compose - GitHub
+- [X] NOTE: To install a different version of Compose, substitute 1.27.4 with the version of Compose you want to use. To check the latest version, go to docker/compose - GitHub
 
 - [X] Run this command to download the current stable release of Docker Compose
 ```
-$ sudo curl -L "https://github.com/docker/compose/releases/download/1.25.5/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+$ sudo curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 
 - [X] Apply executable permissions to the binary:
@@ -201,7 +201,7 @@ $ docker-compose --version
 
 ### How to install firewalld
 - [X] Install and setup firewalld
-```commandline
+```
 $ sudo dnf install firewalld
 $ sudo systemctl enable firewalld
 $ sudo systemctl start firewalld
@@ -209,23 +209,23 @@ $ sudo systemctl status firewalld
 ```
 
 - [X] How to allow a port?
-```commandline
+```
 $ sudo firewall-cmd --zone=public --add-port=5000/tcp --permanent
 $ sudo firewall-cmd --reload
 ```
 
 - [X] How to block a port?
-```commandline
+```
 $ sudo firewall-cmd --zone=public --remove-port=5000/tcp --permanent
 $ sudo firewall-cmd --reload
 ```
 
 - [X] List ports
-```commandline
+```
 $ sudo firewall-cmd --list-all
 ```
 
 - [X] List services
-```commandline
+```
 $ sudo firewall-cmd --list-services
 ```

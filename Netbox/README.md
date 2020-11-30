@@ -37,3 +37,5 @@ services:
 ```
 $ sudo docker-compose up -d
 ```
+
+- [X] Access your server at http://127.0.0.1:8585
