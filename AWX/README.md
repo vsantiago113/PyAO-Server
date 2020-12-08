@@ -38,17 +38,17 @@ The system that runs the AWX service will need to satisfy the following requirem
 
 ## Lets setup some directories on the server
 - [X] Lets create the directory where we are going to store all the data from all our containers.
-```commandline
+```
 $ sudo mkdir /etc/container_data
 ```
 
 - [X] Lets create a directory to store all the certificates
-```commandline
+```
 $ sudo mkdir /etc/container_data/certs
 ```
 
 - [X] Lets create a directory to store all Docker-Compose files
-```commandline
+```
 $ sudo mkdir /etc/container_data/compose_files
 ```
 
@@ -86,6 +86,7 @@ $ sudo dnf update -y
 ```
 
 - [X] Lets install the epel-release package
+NOTE: This might not be available on your system
 ```
 $ sudo dnf install epel-release
 ```
@@ -199,3 +200,5 @@ $ sudo docker logs -f awx_task
 ```
 
 - [X] Access your server at http://127.0.0.1
+
+- [X] After AWX is installed, you can log in with the default username admin and password password.
